@@ -23,4 +23,4 @@ ReactDOM.render(<Router>
             <Route path="/dodrinks/:id" component={Dodrinks} />
         </div>  
     </Router>, document.getElementById('root'));
-registerServiceWorker();
+//registerServiceWorker();
