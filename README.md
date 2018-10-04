@@ -1,1 +1,1 @@
-[Demo website](http://cocktails.surge.sh/cocktailsapp)
+[Demo website](http://cocktailsandfood.surge.sh/cocktailsapp)
