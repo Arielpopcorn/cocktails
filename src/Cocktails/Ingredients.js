@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom'
+import Box from './Box'
 
 const StyledLink = styled(Link)`
   text-decoration: none;
@@ -10,40 +11,58 @@ const StyledLink = styled(Link)`
   } */
 `
 
+
 const StyledButton2 = styled.button`
+  height: 80px;
   font-size: 18px;
-  border-radius : 12px;
+  width: 112px;
+  border-radius : 5px;
   margin: 5px;
-  background-color : rgba(284,48,39,.3);
+  background-color: rgba(44,33,122,0.1);
+  font-family: 'Ubuntu Condensed', sans-serif;
   &:hover{
-    background-color: pink;
-    transform: translateX(-5px);
+    /* transform: translateX(-5px);
     transition: transform .1s;
-    box-shadow: 1px 2px gray;
+    box-shadow: 1px 2px gray; */
+    background-color: rgba(44,33,122,0.2);
   };
-`
+  `
 
 const StyledInput = styled.input`
   width : 100px;
+  height:0px;
   padding : 20px 10px;
   margin : 10px;
   box-sizing: border-box;
-  border: 4px solid pink;
+  border: 2px solid rgb(0,0,0,0.2);
   border-radius: 4px;
 `
 
 const StyledButton = styled.button`
   border : none;
-  background-color : rgba(0,0,0,.2);
-  padding : 10px;
-  border-radius : 12px;
+  padding : 12px 20px;; 
+  border-radius : 4px;
+  font-size: 15px;
   background-color: rgba(44,33,122,0.2);
+  font-family: 'Inconsolata', monospace;
   &:hover{
-    background-color: (22,22,22,.8));
-    transform: translateX(-5px);
+    /* background-color: (22,22,22,.8)); */
+    transform: translateX(-1px);
     transition: transform .1s;
-    box-shadow: 1px 2px gray;
-  };
+    box-shadow: 1px 2px rgba(0,0,0,.3);
+  }; 
+`
+
+const LiButton = styled.li`
+  text-decoration: none;
+  width: 100px;
+`
+
+const Bigdiv = styled.div`
+  margin-bottom: 200px;
+  display: grid;
+  justify-items: center;
+  grid-template-columns: repeat(3,1fr);
 `
 
 class Ingredients extends Component {
@@ -88,14 +107,17 @@ class Ingredients extends Component {
     console.log(items)
     return (
       <div>
-        <StyledInput type="text" onChange={this.ingredients}/>
-        <StyledButton onClick={this.search}>Choose A Ingredient To Know How To Make It</StyledButton>
+          <Box>
+          <h2>Write A Ingredient To Know How To Make It</h2>
+          <StyledInput type="text" onChange={this.ingredients}/>
+          <StyledButton onClick={this.search}>Search</StyledButton>
+          </Box>
         {/* JSON.stringify(this.state.items) */}
-        {items.map(item => (
-            <li key={item.id}>
-                <StyledButton2><StyledLink to={"/dodrinks/" + item.idDrink}>{item.strDrink}</StyledLink></StyledButton2>                       
-            </li>
-        ))}
+        <Bigdiv>{items.map(item => (
+            <LiButton key={item.id}>
+                <StyledLink to={"/dodrinks/" + item.idDrink}><StyledButton2>{item.strDrink}</StyledButton2></StyledLink>                       
+            </LiButton>
+        ))}</Bigdiv>
       </div>
     );
   }

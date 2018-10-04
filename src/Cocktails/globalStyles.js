@@ -1,7 +1,12 @@
 import { injectGlobal } from 'styled-components'
 
 injectGlobal`
-    body {
-        background: rgba(0,0,0,0.2);
+    html, body {
+        background-color: #fff;
+        height: 100%;
+    }
+
+    #root {
+        height: 100%;
     }
 `
