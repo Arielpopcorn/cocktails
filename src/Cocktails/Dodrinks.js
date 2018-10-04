@@ -39,7 +39,7 @@ const Dowrapper = styled.div`
 `
 
 const H1 = styled.h1`
-    font-family: Tuna;
+    font-family: 'Slabo 27px';
     font-size: 50px;
     text-align: center;
     margin-top: 0;
@@ -58,14 +58,14 @@ const I1 = styled.dt`
     padding-bottom:10px;
     margin-bottom: 20px;
     text-transform: capitalize;
-    font-family: Tuna;
+    font-family: 'Slabo 27px';
 `
 
 const I2 = styled.dd`
   width: 120px;
     text-align: left;
     font-size: 16px;
-    font-family: Tuna;
+    font-family: 'Slabo 27px';
 
 `
 
@@ -76,7 +76,7 @@ const H2 = styled.h2`
     width:500px;
     font-weight: 200; 
     font-size: 15px;
-    font-family: Tuna;
+    font-family: 'Slabo 27px';
     margin-top: 40px;
 
     /* padding-left: 90px; */
@@ -88,7 +88,7 @@ const StyledButton = styled.button`
     margin-bottom: 60px;
     border-radius: 3px;
     background-color: rgba(111,100,186,.5);
-    font-family: Tuna;
+    font-family: 'Slabo 27px';
     margin-top: 20px;
     &:hover{
     background-color: rgba(111,100,186,.6);

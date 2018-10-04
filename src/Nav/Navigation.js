@@ -9,7 +9,7 @@ const Container = styled.nav`
 `
 
 const StyledH1 = styled.h1`
-    font-family: Tuna;
+    font-family: 'Slabo 27px';
     font-size: 20px; 
     width: 150px;
 ` 
@@ -38,7 +38,7 @@ const Li = styled.li`
 
 const StyledLink = styled(Link)`
     color: #000;
-    font-family: Tuna;
+    font-family: 'Slabo 27px';
     text-decoration: none;
 `
 

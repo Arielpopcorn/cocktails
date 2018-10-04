@@ -86,7 +86,7 @@ const Buttonback = styled.button`
     margin-bottom: 60px;
     border-radius: 3px;
     background-color: rgba(111,100,186,.5);
-    font-family: Tuna;
+    font-family: 'Slabo 27px';
     &:hover{
     background-color: rgba(111,100,186,.6);
     transform: translateX(-3px) translateY(-2px);
@@ -104,7 +104,7 @@ const HH1 = styled.h1`
     text-align: center;
     margin: 170px auto 20px;
     width: 500px;
-    font-family: "Tuna";
+    font-family: 'Slabo 27px';
     font-weight: 200;
     font-size: 42px;
 `
@@ -127,7 +127,7 @@ const I1 = styled.dt`
     width: 120px;
     text-align: left;
     font-size: 16px;
-    font-family: Tuna;
+    font-family: 'Slabo 27px';
 
 `
 const I2 = styled.dd`
@@ -137,7 +137,7 @@ const I2 = styled.dd`
     padding-bottom:10px;
     margin-bottom: 20px;
     text-transform: capitalize;
-    font-family: Tuna;
+    font-family: 'Slabo 27px';
 `
 
 const Idiv = styled.div`
@@ -150,12 +150,12 @@ const InstructionsWrapper = styled.div`
   background-color: #fafafa;
   height: auto;
   min-height: 400px;
-  font-family: Tuna;
+  font-family: 'Slabo 27px';
   text-align: center;
 `
 
 const Instructions = styled.div`
-  font-family: Tuna;
+  font-family: 'Slabo 27px';
   margin: auto 300px;
   padding-bottom: 55px;
   line-height: 2em;

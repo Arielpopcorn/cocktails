@@ -56,7 +56,7 @@ const Li = styled.li`
 const H1 = styled.h1`
     font-size : 40px;
     text-align : center;
-    font-family: Tuna;
+    font-family: 'Slabo 27px';
     margin: 0;
     padding: 20px;
     width: 600px;

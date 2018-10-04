@@ -9,7 +9,7 @@ const Container = styled.nav`
     margin-right: 136px;
 `
 const StyledH1 = styled.h1`
-    font-family: Tuna;
+    font-family: 'Slabo 27px';
     font-size: 20px; 
 `
 const NavList = styled.ul`
@@ -22,7 +22,7 @@ const NavList = styled.ul`
 const StyledLink = styled(Link)`
     text-decoration: none;
     color: #000;
-    font-family: Tuna;
+    font-family: 'Slabo 27px';
 `
 const Li = styled.li`
     display: flex;
@@ -47,7 +47,7 @@ class SmallNavigation extends React.Component{
             <Container>
                 <StyledH1>Eat or Drink?</StyledH1>
                 <NavList>
-                    <Li><StyledLink to={"/cocktailsapp"}>Cocltails</StyledLink></Li>
+                    <Li><StyledLink to={"/cocktailsapp"}>Cocktails</StyledLink></Li>
                     <Li><StyledLink to={"/Foodapp"}>Food</StyledLink></Li>
                 </NavList>
             </Container>
