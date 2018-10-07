@@ -1,14 +1,16 @@
 import React, { Fragment } from 'react'
-import Loader from 'react-loader-spinner'
+
 import {Link} from 'react-router-dom'
 import styled from '../../node_modules/styled-components';
 import cuisineImg from '../images/cuisine.svg'
 import Cuisine from '../images/cuisine.js'
 import SmallNavigation from '../Nav/SmallNavigation'
+import Loader from '../Loader'
 
 const Maindiv = styled.div`
     margin: 0;
     display: block;
+
 `
 
 const Smallicon = styled.div`
@@ -20,6 +22,9 @@ const Smallicon = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    @media (max-width: 600px) {
+        margin-bottom: 40px;
+    }
 `
 
 const RecipeWrapper = styled.div`
@@ -29,6 +34,9 @@ const RecipeWrapper = styled.div`
     justify-content: center;
     background-color:fafafa;
     margin-bottom: 40px;
+    @media (max-width: 600px) {
+        flex-direction: column;
+    }
 `
 
 const Worddiv = styled.div`
@@ -42,6 +50,13 @@ const Outsidediv = styled.div`
     
 `
 
+const TitleMedia = styled.div`
+    display: none;
+    @media (max-width: 600px) {
+        display: block;
+    }
+`
+
 const RecipeImgWrapper = styled.div`
     width: 510px;
     height: 470px;
@@ -49,7 +64,16 @@ const RecipeImgWrapper = styled.div`
     /* margin-top: -80px; */
     position: relative;
     z-index: 1;
-    /* align-self: flex-end; */
+
+    @media (max-width: 730px) {
+        width:350px;
+        height: 350px;
+    }
+
+    @media (max-width: 600px) {
+        width: 100%;
+        height: 100%;
+    }
 `
 
 const IngredientsWrapper = styled.div`
@@ -60,6 +84,15 @@ const IngredientsWrapper = styled.div`
     background-color: #f4f4f3;
     /* margin-top: -130px; */
     margin-right: -10px;
+
+    @media (max-width: 900px) {
+        margin-right: -170px;
+    }
+
+    @media (max-width: 600px) {
+        width: 350px;
+        margin: 0 auto;
+    }
     /* align-self: flex-start; */
 `
 
@@ -73,6 +106,15 @@ const StyledH1 = styled.h1`
 const Styledimg = styled.img`
     width: 500px;
     height: 500px;
+    @media (max-width: 730px) {
+        width:350px;
+        height: 350px;
+    }
+
+    @media (max-width: 600px) {
+        width: 100%;
+        height: 100%;
+    }
 `
 
 const Linkback = styled(Link)`
@@ -92,12 +134,22 @@ const Buttonback = styled.button`
     transform: translateX(-3px) translateY(-2px);
     transition: transform  0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
     box-shadow: 1px 2px gray;
-  };
+    }
+    @media (max-width: 600px) {
+        margin: 0;
+    }
 `
 
 const Titlediv = styled.div`
     height: 500px;
     background-color:#fafafa;
+    @media (max-width: 900px) {
+        height: 380px;
+    }
+    @media (max-width: 600px) {
+        order: 1;
+        display: none;
+    }
 `
 
 const HH1 = styled.h1`
@@ -107,6 +159,17 @@ const HH1 = styled.h1`
     font-family: 'Slabo 27px';
     font-weight: 200;
     font-size: 42px;
+    @media (max-width: 900px) {
+        margin-top: 0px;
+        margin-bottom: 0;
+    }
+    @media (max-width: 600px) {
+        margin: auto;
+        padding-top: 86px;
+        width: auto;
+        padding-bottom: 10px;
+        font-size: 32px;
+    }
 `
 
 const Middleh1= styled.h1`
@@ -115,7 +178,9 @@ const Middleh1= styled.h1`
     margin-top: 40px;
     margin-bottom: 30px;
     margin-left: 38px;
-
+    @media (max-width: 600px) {
+        margin: 20px auto;
+    }
 `
 
 const CuisineWrapper = styled.div`
@@ -138,12 +203,20 @@ const I2 = styled.dd`
     margin-bottom: 20px;
     text-transform: capitalize;
     font-family: 'Slabo 27px';
+    @media (max-width: 600px) {
+        width: 100px;
+        
+    }
 `
 
 const Idiv = styled.div`
   display: flex;
   margin-left: 50px;
   margin-top:17px;
+  @media (max-width: 600px) {
+        justify-content: center;
+        margin: auto 20px;
+    }
 `
 
 const InstructionsWrapper = styled.div`
@@ -159,10 +232,35 @@ const Instructions = styled.div`
   margin: auto 300px;
   padding-bottom: 55px;
   line-height: 2em;
+  text-align: left;
+  @media (max-width: 900px) {
+        margin: auto 30px;
+    }
+
+  @media (max-width: 600px) {
+        margin: auto 30px;
+    }
 `
 const Nav = styled.nav`
-  color: #000;
+    @media (max-width: 900px) {
+        display: flex;
+        justify-content: center;
+    }
+   /* @media (max-width: 600px) {
+        display: none;
+    } */
 `
+
+const MediaNav = styled.div`
+    display: none;
+     @media (max-width: 600px) {
+        display: flex;
+        padding-bottom: 40px;
+        justify-content: center;
+        align-items: center;
+    }
+`
+
 
 
 class Mealitself extends React.Component{
@@ -191,12 +289,7 @@ class Mealitself extends React.Component{
     render(){
         if(this.state.loading == true){
             return(
-                <Loader 
-                    type="Audio"
-                    color="#00BFFF"
-                    height="100"	
-                    width="100"
-                />  
+                <Loader />  
             )
         }
 
@@ -223,8 +316,8 @@ class Mealitself extends React.Component{
         return(
             <Maindiv>
                     <Outsidediv>
-                           <Titlediv>
-                            <SmallNavigation />
+                        <Titlediv>
+                            <Nav><SmallNavigation /></Nav>
                             <HH1>{item[0].strMeal}</HH1>
                             <Smallicon><CuisineWrapper><Cuisine color={'black'} /></CuisineWrapper>{item[0].strArea} Cuisine</Smallicon>
                         </Titlediv>
@@ -234,7 +327,12 @@ class Mealitself extends React.Component{
                         <RecipeImgWrapper>                       
                             <Styledimg src={item[0].strMealThumb} />
                         </RecipeImgWrapper>
-                    
+
+                        <TitleMedia>
+                            <HH1>{item[0].strMeal}</HH1>
+                            <Smallicon><CuisineWrapper><Cuisine color={'black'} /></CuisineWrapper>{item[0].strArea} Cuisine</Smallicon>
+                        </TitleMedia>
+
                         <IngredientsWrapper>
                             <Middleh1>INGREDIENTS</Middleh1>
 
@@ -256,6 +354,7 @@ class Mealitself extends React.Component{
                             <p>{item[0].strInstructions}</p>
                         </Instructions>                        
                         <Linkback to={`/category/${item[0].strCategory}`}><Buttonback>More {item[0].strCategory}</Buttonback></Linkback>
+                        <MediaNav><SmallNavigation /></MediaNav>
                     </InstructionsWrapper>
                     
             </Maindiv>

@@ -26,6 +26,9 @@ const Nav = styled.div`
     margin-right: -70px;
     position: relative;
     z-index: 1;
+    @media (max-width: 900px) {
+        display: none;
+    }
 `
 
 const Styleddiv = styled.div`
@@ -61,6 +64,14 @@ const H1 = styled.h1`
     padding: 20px;
     width: 600px;
     margin: 124px auto 0;
+    @media (max-width: 900px) {
+        width: 500px;
+        margin-top: 60px;
+    }
+    @media (max-width: 600px) {
+        width: 350px;
+        margin-top: 50px;
+    }
 `
 
 const Styleddivbox = styled.div`
@@ -69,12 +80,26 @@ const Styleddivbox = styled.div`
     flex-direction: column;
     width: 500px;
     margin: 0 auto;
+    @media (max-width: 600px) {
+        width: auto;
+        justify-content: center;
+        align-items: center;
+    }
 `
 
 const Styledsvg = styled.svg`
     position: fixed;
     left: 0;
     bottom: 0;
+`
+
+const MediaNav =styled.div`
+    display: none;
+    @media (max-width: 900px) {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 30px;
+    }
 `
 
 class Foodapp extends React.Component{
@@ -87,6 +112,7 @@ class Foodapp extends React.Component{
                     <Styleddivbox>
                         <Li><AllCategories>Categories</AllCategories></Li>
                     </Styleddivbox>
+                    <MediaNav><Navigation /></MediaNav>
                 </Ul>
                 {/* <Styledsvg width="100%" height="172" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path fill="white">

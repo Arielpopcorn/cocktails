@@ -5,30 +5,15 @@ import Drinks from './Drinks.js'
 import Ingredients from './Ingredients.js'
 import Navigation from '../Nav/Navigation.js'
 
-// const Nav = styled.nav`
-//     background-color: rgba(0,0,0,.3);
-//     height: 48px;
-//     width: 170px;
-//     position: fixed;
-//     top: 120px;
-//     left: 108px;
-//     border-radius: 12px;
-    
-//     &:hover{
-//         height: 480px;
-//         background-color: rgba(0,0,0,.5);
-//         /* transition-duration: .3s;
-//         transition-delay: .2s; */
-//         transition: 0.8s cubic-bezier(0.2,0.8,0.2,1);
-//     };
-// `
-
 
 const Styleddiv = styled.div`
     text-align: center;
     display: flex;
     flex-direction: row;
     padding-top: 74px;
+    @media (max-width: 600px) {
+        padding-top: 0;
+    }
 `
 
 const Ul = styled.ul`
@@ -44,6 +29,7 @@ const Ul = styled.ul`
 
 const Li = styled.li`
     list-style : none;
+
 `
 
 const H1 = styled.h1`
@@ -54,11 +40,23 @@ const H1 = styled.h1`
     padding: 20px;
     width: 600px;
     margin: 124px auto 0;
+    @media (max-width: 1100px) {
+        width: 400px;
+        margin-top: 40px;
+    }
+    @media (max-width: 600px) {
+        width: 300px;
+        margin-top: 40px;
+        padding: 0;
+    }
 `
 
 const Styleddivbox = styled.div`
     display: flex;
     flex-direction: column;
+    @media (max-width: 600px) {
+        height: auto;
+    }
     /* margin: 0 auto; */
 `
 
@@ -66,13 +64,19 @@ const Nav = styled.div`
     margin-right: -70px;
     position: relative;
     z-index: 1;
+    @media (max-width: 600px) {
+        display: none;
+    }
 `
 
-// const Styledsvg = styled.svg`
-//     position: fixed;
-//     left: 0;
-//     bottom: 0;
-// `
+const MediaNav = styled.div`
+    display: none;
+    @media (max-width: 600px) {
+        display: flex;
+        margin-bottom: 40px;
+    }
+`
+
 
 class Cocktailsapp extends React.Component{
     render(){
@@ -85,6 +89,7 @@ class Cocktailsapp extends React.Component{
                         <Li><Drinks /></Li>
                         <Li><Ingredients /></Li>
                     </Styleddivbox>
+                    <MediaNav><Navigation /></MediaNav>
 
                     {/* <Styledsvg width="100%" height="172" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fill="grey">

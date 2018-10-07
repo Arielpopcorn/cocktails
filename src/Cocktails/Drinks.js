@@ -1,19 +1,27 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import {Link} from 'react-router-dom'
-
+import { Link } from 'react-router-dom'
+import DefaultInput from '../Forms/Input'
+import Button from '../Forms/Button'
 import DefaultBox from './Box'
 
 //import logo from './logo.svg';
 //import './App.css';
 
-const Li = styled.li`
-  list-style: none;
+const Input = styled(DefaultInput)`
+  margin-left: 10px;
 `
 
 const Box = styled(DefaultBox)`
   margin-bottom: 20px;
   margin-top: 20px;
+  /* @media (max-width: 600px) {
+        margin-bottom: 0;
+    } */
+`
+
+const Li = styled.li`
+  list-style: none;
 `
 
 const StyledLink = styled(Link)`
@@ -21,34 +29,9 @@ const StyledLink = styled(Link)`
   color: #000;
 `
 
-const StyledInput = styled.input`
-  width : 100px;
-  height:0px;
-  padding : 20px 10px;
-  margin : 10px;
-  box-sizing: border-box;
-  border: 2px solid rgb(0,0,0,0.2);
-  border-radius: 4px;
-`
-
-const StyledButton = styled.button`
-  border : none;
-  padding : 12px 20px;; 
-  border-radius : 4px;
-  font-size: 15px;
-  background-color: rgba(44,33,122,0.2);
-  font-family: 'Inconsolata', monospace;
-  &:hover{
-    /* background-color: (22,22,22,.8)); */
-    transform: translateX(-1px);
-    transition: transform .1s;
-    box-shadow: 1px 2px rgba(0,0,0,.3);
-  }; 
-`
-
 const StyledButton2 = styled.button`
-  height: 80px;
-  font-size: 18px;
+  height: 77px;
+  font-size: 14px;
   width: 112px;
   border-radius : 5px;
   margin: 5px;
@@ -60,7 +43,6 @@ const StyledButton2 = styled.button`
     box-shadow: 1px 2px gray; */
     background-color: rgba(44,33,122,0.2);
   };
-
 `
 
 const StyledH2 = styled.h2`
@@ -70,7 +52,7 @@ const StyledH2 = styled.h2`
 
 const LiButton = styled.li`
   text-decoration: none;
-  width: 100px;
+  width: 150px;
 `
 
 const Bigdiv = styled.div`
@@ -78,6 +60,17 @@ const Bigdiv = styled.div`
   display: grid;
   justify-items: center;
   grid-template-columns: repeat(4,1fr);
+  @media (max-width: 900px) {
+        grid-template-columns: repeat(3,1fr);
+        margin-bottom: 20px;
+    }
+  @media (max-width: 600px) {
+      grid-template-columns: repeat(2,1fr);
+      margin-bottom: 20px;
+  }
+`
+
+const Form = styled.form`
 `
 
 class Drinks extends Component {
@@ -90,46 +83,63 @@ class Drinks extends Component {
     }
   }
 
-  search = () =>{
+  search = (e) =>{
+    e.preventDefault()
     fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' + this.state.drinks)
         .then(res => {
           console.log(res)
           return res.json()
         })
         .then(json =>{
-          console.log(json)
-          this.setState({
-            loading : false,
-            items : json.drinks, // ['drink1','drink2'] or null
-          })
+          if(json.drinks === null) {
+            this.setState({
+              items: [],
+              error:true,
+            })
+          } else {
+            this.setState({
+              loading : false,
+              items : json.drinks, // ['drink1','drink2'] or null
+            })
+          }
+          
         })
-        .catch((error) => console.log(error))
+        .catch((error) => {
+          this.setState({
+            items: [],
+            error:true,
+          })
+          console.log(error)})
   };
 
   drinks = (e) =>{
     console.log(e.target.value)
-    this.setState({drinks : e.target.value})
+    this.setState({
+      drinks : e.target.value,
+      error:false
+    })
+    
   }
 
   render = () => {
-    const { items, drinks } = this.state
-
-    if(items === null){
-      return(
-        <div>
-        {drinks} doesn't exist.
-        </div>
-      )
-    }
+    const { items, drinks, error } = this.state
 
     return (
       <div>
         <Box>
           <h2>Write A Drink Name To Know How To Make It</h2>
-          <StyledInput type="text" onChange={this.drinks}/>
-          <StyledButton onClick={this.search}>Search</StyledButton>
+          <Form onSubmit={this.search}>
+            <Input type="text" onChange={this.drinks}/>
+            <Button>Search</Button>
+          </Form>
         </Box>
         {/* JSON.stringify(this.state.items) */}
+
+        {error == true ? 
+          <div>
+          {drinks} doesn't exist.
+          </div> : ''}
+
         {items && items.length > 0 && <Bigdiv>{items.map(item => (
             <LiButton key={item.id}>
               <StyledLink to={"/dodrinks/" + item.idDrink}><StyledButton2>{item.strDrink}</StyledButton2></StyledLink>                        

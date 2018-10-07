@@ -2,16 +2,27 @@ import React from 'react'
 import styled from 'styled-components'
 import {Link} from 'react-router-dom'
 
+
 const Container = styled.nav`
     float: right;
     display: flex;
     margin-top: 50px;
     margin-right: 136px;
+
+    @media (max-width: 900px) {
+        margin-top: 30px;
+        margin-right:0;
+    }
 `
+
 const StyledH1 = styled.h1`
     font-family: 'Slabo 27px';
     font-size: 20px; 
+    /* @media (max-width: 600px) {
+        font-size: 15px;
+    } */
 `
+
 const NavList = styled.ul`
     display: flex;
     justify-content: center;

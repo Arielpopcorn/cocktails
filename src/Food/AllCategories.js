@@ -10,8 +10,14 @@ const Bigdiv = styled.div`
   display: grid;
   grid-template-columns: repeat(3,1fr);
   grid-gap: 20px;
-  /* justify-items: center;
-  align-content: center; */
+  @media (max-width: 900px) {
+        margin-bottom: 30px;
+    }
+  @media (max-width: 600px) {
+        grid-template-columns: repeat(2,1fr);
+        grid-gap: 0;
+        margin-bottom: 0;
+    }
 `
 
 const StyledLink = styled(Link)`
@@ -23,18 +29,14 @@ const StyledButton2 = styled.button`
   text-align: center;
   height: 80px;
   font-size: 18px;
-  width: 112px;
+  width: 145px;
   border-radius : 5px;
   margin: 5px;
   background-color: rgba(44,33,122,0.1);
   font-family: 'Ubuntu Condensed', sans-serif;
   &:hover{
-    /* transform: translateX(-5px);
-    transition: transform .1s;
-    box-shadow: 1px 2px gray; */
     background-color: rgba(44,33,122,0.2);
   };
-
 `
 
 

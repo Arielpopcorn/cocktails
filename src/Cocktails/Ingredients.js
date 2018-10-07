@@ -2,19 +2,22 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom'
 import Box from './Box'
+import DefaultInput from '../Forms/Input'
+import Button from '../Forms/Button'
+
+
+const Input = styled(DefaultInput)`
+  margin-left: 10px;
+`
 
 const StyledLink = styled(Link)`
   text-decoration: none;
   color: #000;
-  /* &:hover {
-    color: pink;
-  } */
 `
 
-
 const StyledButton2 = styled.button`
-  height: 80px;
-  font-size: 18px;
+  height: 77px;
+  font-size: 14px;
   width: 112px;
   border-radius : 5px;
   margin: 5px;
@@ -28,34 +31,10 @@ const StyledButton2 = styled.button`
   };
   `
 
-const StyledInput = styled.input`
-  width : 100px;
-  height:0px;
-  padding : 20px 10px;
-  margin : 10px;
-  box-sizing: border-box;
-  border: 2px solid rgb(0,0,0,0.2);
-  border-radius: 4px;
-`
-
-const StyledButton = styled.button`
-  border : none;
-  padding : 12px 20px;; 
-  border-radius : 4px;
-  font-size: 15px;
-  background-color: rgba(44,33,122,0.2);
-  font-family: 'Inconsolata', monospace;
-  &:hover{
-    /* background-color: (22,22,22,.8)); */
-    transform: translateX(-1px);
-    transition: transform .1s;
-    box-shadow: 1px 2px rgba(0,0,0,.3);
-  }; 
-`
 
 const LiButton = styled.li`
   text-decoration: none;
-  width: 100px;
+  width: 150px;
 `
 
 const Bigdiv = styled.div`
@@ -63,6 +42,19 @@ const Bigdiv = styled.div`
   display: grid;
   justify-items: center;
   grid-template-columns: repeat(3,1fr);
+  @media (max-width: 900px) {
+        grid-template-columns: repeat(3,1fr);
+        margin-bottom: 20px;
+    }
+  @media (max-width: 600px) {
+        grid-template-columns: repeat(2,1fr);
+        margin-bottom: 20px;
+        margin-top: 20px;
+    }
+`
+
+const Form = styled.form`
+
 `
 
 class Ingredients extends Component {
@@ -75,7 +67,9 @@ class Ingredients extends Component {
     }
   }
 
-  search = () => {
+
+  search = (e) => {
+    e.preventDefault()
     fetch('https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=' + this.state.ingredient)
         .then(res => res.json())
         .then(json =>{
@@ -87,32 +81,50 @@ class Ingredients extends Component {
         .catch(e => {
           this.setState({
             loading : false,
-            items : null,
+            items : [],
+            error: true
           })
           console.log(e)
         })
   };
   
   ingredients = e => {
-    this.setState({ingredient: e.target.value})
+    this.setState({
+      ingredient: e.target.value,
+      error: false
+    })
   }
   render() {
-    const { items } = this.state
-    if(items === null){
-      return(
-        <div>{this.state.ingredient} doesn't exist.</div>
-      )
-    }
+    const { items, error } = this.state
+
+  //   if(items === null) {
+  //     return <div>
+  //     {this.state.ingredient} doesn't exist.
+  // </div>: "" }
+
+  //   }
+
+    
+
 
     console.log(items)
     return (
       <div>
           <Box>
           <h2>Write A Ingredient To Know How To Make It</h2>
-          <StyledInput type="text" onChange={this.ingredients}/>
-          <StyledButton onClick={this.search}>Search</StyledButton>
+          <Form onSubmit={this.search}>
+            <Input type="text" onChange={this.ingredients}/>
+            <Button>Search</Button>
+          </Form>
           </Box>
         {/* JSON.stringify(this.state.items) */}
+
+        {error === true ? 
+          <div>
+            {this.state.ingredient} doesn't exist.
+          </div>: "" 
+        }
+            
         <Bigdiv>{items.map(item => (
             <LiButton key={item.id}>
                 <StyledLink to={"/dodrinks/" + item.idDrink}><StyledButton2>{item.strDrink}</StyledButton2></StyledLink>                       

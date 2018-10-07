@@ -6,6 +6,10 @@ const Container = styled.nav`
     float: left;
     margin-top: 80px; 
     margin-left: 40px;
+    @media (max-width: 900px) {
+        float: none;
+        margin: 0;
+    }
 `
 
 const StyledH1 = styled.h1`

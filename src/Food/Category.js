@@ -63,15 +63,21 @@ const H2 = styled.h2`
 `
 
 const Styleddivv = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin: 160px;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  align-content: center;
+  justify-items: center;
+  padding-top: 100px;
+  @media (max-width: 600px) {
+    grid-template-columns: repeat(1,1fr);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    }
 `
 
 const CLickbutton = styled.button`
   width: 200px;
-  height: 60px;
+  height: 95px;
   border-radius: 12px;
   margin: 2px;
   background-color: rgba(111,100,186,.3);

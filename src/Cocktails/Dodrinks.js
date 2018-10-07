@@ -17,17 +17,28 @@ const Mainwrapper =styled.div`
     background-color: #fafafa;
     height: 600px;
     justify-content: center;
+    @media (max-width: 1100px) {
+        flex-direction: column;
+        margin: 0;
+        height: 100%;
+    }
 `
 
 const Nav = styled.div`
     /* margin-bottom: -31px;
     z-index: 1; */
+    @media (max-width: 600px) {
+        display: none;
+    }
 `
 
 const StyledImg = styled.img`
     height: 400px;
     width: 400px;
     padding-left: 60px;
+    @media (max-width: 1100px) {
+        padding-left: 0;
+    }
 `
 
 const Dowrapper = styled.div`
@@ -36,6 +47,9 @@ const Dowrapper = styled.div`
     align-items : center;
     justify-content: center;
     padding-left: 90px;
+    @media (max-width: 1100px) {
+        padding-left: 0;
+    }
 `
 
 const H1 = styled.h1`
@@ -44,11 +58,20 @@ const H1 = styled.h1`
     text-align: center;
     margin-top: 0;
     margin-bottom: 70px;
+    @media (max-width: 600px) {
+        margin-top: 70px;
+        font-size: 30px;
+        width: 300px;
+    }
+    
 `
 
 
 const Idiv = styled.div`
   display: flex;
+  @media (max-width: 600px) {
+        width: 300px;
+    }
 `
 
 const I1 = styled.dt`
@@ -72,13 +95,15 @@ const I2 = styled.dd`
 const H2 = styled.h2`
     display: flex;
     align-items: center;
-    text-align: center;
+    text-align: left;
     width:500px;
     font-weight: 200; 
     font-size: 15px;
     font-family: 'Slabo 27px';
     margin-top: 40px;
-
+    @media (max-width: 600px) {
+        width: 300px;
+    }
     /* padding-left: 90px; */
 `
 
@@ -96,15 +121,23 @@ const StyledButton = styled.button`
     transition: transform  0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
     box-shadow: 1px 2px gray;
   };
+  @media (max-width: 600px) {
+    margin-bottom: 0px;
+    }
 `
 
 const StyledLink = styled(Link)`
     text-decoration: none;
     width: 155px;
 `
-
-
-
+const MediaNav = styled.div`
+  display: none;
+  @media (max-width: 600px) {
+      display: flex;
+      padding-bottom: 40px;
+        /* width: 300px; */
+    }
+`
 
 
 
@@ -174,6 +207,7 @@ class Dodrinks extends React.Component{
                         </Idiv>)}
                         <H2>{item[0].strInstructions}</H2>
                         <StyledLink to={"/Cocktailsapp"}><StyledButton>More Cocktails</StyledButton></StyledLink>
+                        <MediaNav><SmallNavigation /></MediaNav>
                     </Dowrapper>
                 </Mainwrapper>
             </Styleddiv>
