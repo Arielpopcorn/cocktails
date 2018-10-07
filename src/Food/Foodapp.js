@@ -67,10 +67,12 @@ const H1 = styled.h1`
     @media (max-width: 900px) {
         width: 500px;
         margin-top: 60px;
+        padding:0;
     }
     @media (max-width: 600px) {
         width: 350px;
         margin-top: 50px;
+        padding: 0;
     }
 `
 
